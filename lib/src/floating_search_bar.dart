@@ -67,6 +67,7 @@ class FloatingSearchBar extends ImplicitlyAnimatedWidget {
     this.controller,
     this.textInputAction = TextInputAction.search,
     this.textInputType = TextInputType.text,
+    this.inputFormatters,
     this.autocorrect = true,
     this.contextMenuBuilder,
     Duration? showAfter,
@@ -353,6 +354,12 @@ class FloatingSearchBar extends ImplicitlyAnimatedWidget {
   /// of this `FloatingSearchBar`.
   /// {@endtemplate}
   final TextInputType textInputType;
+
+  /// {@template floating_search_bar.inputFormatters}
+  /// The input formatters to apply to the [TextField]
+  /// of this `FloatingSearchBar`.
+  /// {@endtemplate}
+  final List<TextInputFormatter>? inputFormatters;
 
   /// {@template floating_search_bar.autocorrect}
   /// Enable or disable autocorrection of the [TextField] of
@@ -753,6 +760,7 @@ class FloatingSearchBarState extends ImplicitlyAnimatedWidgetState<
       transitionCurve: widget.transitionCurve,
       textInputAction: widget.textInputAction,
       textInputType: widget.textInputType,
+      inputFormatters: widget.inputFormatters,
       accentColor: widget.accentColor,
       hintStyle: widget.hintStyle,
       iconColor: widget.iconColor,
