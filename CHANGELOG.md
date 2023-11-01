@@ -1,3 +1,7 @@
+## 0.5.0
+
+* **Breaking** Made package ready for a change in `FixedScrollMetrics` Flutter 3.10.0. Minimum Dart version required is now 3.0.0
+
 ## 0.4.2
 
 * **Breaking** Replaced deprecated `ToolbarOptions` with `EditableTextContextMenuBuilder`
