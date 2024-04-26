@@ -66,7 +66,11 @@ class FloatingSearchBar extends ImplicitlyAnimatedWidget {
     this.textInputAction = TextInputAction.search,
     this.textInputType = TextInputType.text,
     this.inputFormatters,
-    this.autocorrect = true,
+    this.autocorrect = false,
+    this.enableSuggestions = false,
+    this.textCapitalization = TextCapitalization.none,
+    this.smartQuotesType = SmartQuotesType.disabled,
+    this.smartDashesType = SmartDashesType.disabled,
     this.contextMenuBuilder,
     Duration? showAfter,
     this.isScrollControlled = false,
@@ -363,6 +367,30 @@ class FloatingSearchBar extends ImplicitlyAnimatedWidget {
   /// this `FloatingSearchBar`.
   /// {@endtemplate}
   final bool autocorrect;
+
+  /// {@template floating_search_bar.enableSuggestions}
+  /// Enable or disable suggestions of the [TextField] of
+  /// this `FloatingSearchBar`.
+  /// {@endtemplate}
+  final bool enableSuggestions;
+
+  /// {@template floating_search_bar.textCapitalization}
+  /// Set the [TextCapitalization] of the [TextField] of
+  /// this `FloatingSearchBar`.
+  /// {@endtemplate}
+  final TextCapitalization textCapitalization;
+
+  /// {@template floating_search_bar.smartQuotesType}
+  /// Set the [SmartQuotesType] of the [TextField] of
+  /// this `FloatingSearchBar`.
+  /// {@endtemplate}
+  final SmartQuotesType smartQuotesType;
+
+  /// {@template floating_search_bar.smartDashesType}
+  /// Set the [SmartDashesType] of the [TextField] of
+  /// this `FloatingSearchBar`.
+  /// {@endtemplate}
+  final SmartDashesType smartDashesType;
 
   /// {@template floating_search_bar.contextMenuBuilder}
   /// The [EditableTextContextMenuBuilder] of the [TextField] of
@@ -730,6 +758,10 @@ class FloatingSearchBarState extends ImplicitlyAnimatedWidgetState<FloatingSearc
       actions: widget.actions,
       leadingActions: widget.leadingActions,
       autocorrect: widget.autocorrect,
+      enableSuggestions: widget.enableSuggestions,
+      textCapitalization: widget.textCapitalization,
+      smartQuotesType: widget.smartQuotesType,
+      smartDashesType: widget.smartDashesType,
       clearQueryOnClose: widget.clearQueryOnClose,
       debounceDelay: widget.debounceDelay,
       hint: widget.hint,

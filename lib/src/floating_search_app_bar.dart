@@ -52,7 +52,11 @@ class FloatingSearchAppBar extends ImplicitlyAnimatedWidget {
     this.textInputAction = TextInputAction.search,
     this.textInputType = TextInputType.text,
     this.inputFormatters,
-    this.autocorrect = true,
+    this.autocorrect = false,
+    this.enableSuggestions = false,
+    this.textCapitalization = TextCapitalization.none,
+    this.smartQuotesType = SmartQuotesType.disabled,
+    this.smartDashesType = SmartDashesType.disabled,
     this.contextMenuBuilder,
     this.onKeyEvent,
   })  : assert(progress == null || (progress is num || progress is bool)),
@@ -185,6 +189,18 @@ class FloatingSearchAppBar extends ImplicitlyAnimatedWidget {
 
   /// {@macro floating_search_bar.autocorrect}
   final bool autocorrect;
+
+  /// {@macro floating_search_bar.enableSuggestions}
+  final bool enableSuggestions;
+
+  /// {@macro floating_search_bar.textCapitalization}
+  final TextCapitalization textCapitalization;
+
+  /// {@macro floating_search_bar.smartQuotesType}
+  final SmartQuotesType smartQuotesType;
+
+  /// {@macro floating_search_bar.smartDashesType}
+  final SmartDashesType smartDashesType;
 
   /// {@macro floating_search_bar.contextMenuBuilder}
   final EditableTextContextMenuBuilder? contextMenuBuilder;
@@ -590,6 +606,10 @@ class FloatingSearchAppBarState extends ImplicitlyAnimatedWidgetState<FloatingSe
             scrollPhysics: const NeverScrollableScrollPhysics(),
             focusNode: _input.node,
             autocorrect: widget.autocorrect,
+            enableSuggestions: widget.enableSuggestions,
+            textCapitalization: widget.textCapitalization,
+            smartQuotesType: widget.smartQuotesType,
+            smartDashesType: widget.smartDashesType,
             contextMenuBuilder: widget.contextMenuBuilder,
             cursorColor: style.accentColor,
             style: style.queryStyle,
