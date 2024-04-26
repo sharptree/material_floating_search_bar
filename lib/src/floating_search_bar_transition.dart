@@ -75,7 +75,7 @@ abstract class FloatingSearchBarTransition {
 
   @override
   // ignore: hash_and_equals
-  bool operator ==(dynamic other) => other.runtimeType == runtimeType;
+  bool operator ==(Object other) => other.runtimeType == runtimeType;
 }
 
 /// A [FloatingSearchBarTransition]
@@ -141,12 +141,10 @@ class ExpandingFloatingSearchBarTransition extends FloatingSearchBarTransition {
   }
 
   @override
-  EdgeInsetsGeometry lerpMargin() =>
-      EdgeInsetsGeometry.lerp(margin, EdgeInsets.zero, t)!;
+  EdgeInsetsGeometry lerpMargin() => EdgeInsetsGeometry.lerp(margin, EdgeInsets.zero, t)!;
 
   @override
-  BorderRadius lerpBorderRadius() =>
-      BorderRadius.lerp(borderRadius, BorderRadius.zero, t)!;
+  BorderRadius lerpBorderRadius() => BorderRadius.lerp(borderRadius, BorderRadius.zero, t)!;
 
   @override
   void onBodyScrolled() {
@@ -174,8 +172,7 @@ class ExpandingFloatingSearchBarTransition extends FloatingSearchBarTransition {
 /// The base class for all overlaying [FloatingSearchBarTransition]s, which are
 /// those, where the body of the [FloatingSearchBar] is displayed outside of the
 /// bar.
-abstract class OverlayingFloatingSearchBarTransition
-    extends FloatingSearchBarTransition {
+abstract class OverlayingFloatingSearchBarTransition extends FloatingSearchBarTransition {
   OverlayingFloatingSearchBarTransition({
     double? spacing,
     this.divider,
@@ -235,11 +232,10 @@ abstract class OverlayingFloatingSearchBarTransition
 
   @override
   Widget buildTransition(Widget content) {
-    final EdgeInsets margin =
-        this.margin.resolve(Directionality.of(context)).copyWith(
-              top: 0.0,
-              bottom: 0.0,
-            );
+    final EdgeInsets margin = this.margin.resolve(Directionality.of(context)).copyWith(
+          top: 0.0,
+          bottom: 0.0,
+        );
 
     return Padding(
       padding: margin,
@@ -255,14 +251,12 @@ abstract class OverlayingFloatingSearchBarTransition
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
 
-    return other is OverlayingFloatingSearchBarTransition &&
-        other.spacing == spacing &&
-        other.divider == divider;
+    return other is OverlayingFloatingSearchBarTransition && other.spacing == spacing && other.divider == divider;
   }
 
   @override
@@ -275,8 +269,7 @@ abstract class OverlayingFloatingSearchBarTransition
 ///
 /// An example of this can be viewed [here](https://github.com/bxqm/material_floating_search_bar/blob/master/assets/circular_example.gif):
 /// {@endtemplate}
-class CircularFloatingSearchBarTransition
-    extends OverlayingFloatingSearchBarTransition {
+class CircularFloatingSearchBarTransition extends OverlayingFloatingSearchBarTransition {
   /// Creates a [FloatingSearchBarTransition],
   /// {@macro circular_floating_search_bar_transition}
   CircularFloatingSearchBarTransition({
@@ -307,8 +300,7 @@ class CircularFloatingSearchBarTransition
 ///
 /// An example of this can be viewed [here](https://github.com/bxqm/material_floating_search_bar/blob/master/assets/slide_fade_example.gif)
 /// {@endtemplate}
-class SlideFadeFloatingSearchBarTransition
-    extends OverlayingFloatingSearchBarTransition {
+class SlideFadeFloatingSearchBarTransition extends OverlayingFloatingSearchBarTransition {
   /// Creates a [FloatingSearchBarTransition],
   /// {@macro fade_in_floating_search_bar_transition}
   SlideFadeFloatingSearchBarTransition({

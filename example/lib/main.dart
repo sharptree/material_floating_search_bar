@@ -101,12 +101,10 @@ class _HomeState extends State<Home> {
       ),
     ];
 
-    final bool isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
+    final bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
     return Consumer<SearchModel>(
-      builder: (BuildContext context, SearchModel model, _) =>
-          FloatingSearchBar(
+      builder: (BuildContext context, SearchModel model, _) => FloatingSearchBar(
         automaticallyImplyBackButton: false,
         controller: controller,
         hint: 'חיפוש...',
@@ -164,15 +162,13 @@ class _HomeState extends State<Home> {
           physics: const NeverScrollableScrollPhysics(),
           items: model.suggestions,
           insertDuration: const Duration(milliseconds: 700),
-          itemBuilder: (BuildContext context, Animation<double> animation,
-              Place item, _) {
+          itemBuilder: (BuildContext context, Animation<double> animation, Place item, _) {
             return SizeFadeTransition(
               animation: animation,
               child: buildItem(context, item),
             );
           },
-          updateItemBuilder:
-              (BuildContext context, Animation<double> animation, Place item) {
+          updateItemBuilder: (BuildContext context, Animation<double> animation, Place item) {
             return FadeTransition(
               opacity: animation,
               child: buildItem(context, item),
@@ -227,8 +223,7 @@ class _HomeState extends State<Home> {
                       const SizedBox(height: 2),
                       Text(
                         place.level2Address,
-                        style: textTheme.bodyMedium
-                            ?.copyWith(color: Colors.grey.shade600),
+                        style: textTheme.bodyMedium?.copyWith(color: Colors.grey.shade600),
                       ),
                     ],
                   ),
@@ -237,8 +232,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
-        if (model.suggestions.isNotEmpty && place != model.suggestions.last)
-          const Divider(height: 0),
+        if (model.suggestions.isNotEmpty && place != model.suggestions.last) const Divider(height: 0),
       ],
     );
   }
@@ -366,10 +360,8 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FloatingSearchBar(
-        contextMenuBuilder:
-            (BuildContext context, EditableTextState editableTextState) {
-          final List<ContextMenuButtonItem> buttonItems =
-              editableTextState.contextMenuButtonItems;
+        contextMenuBuilder: (BuildContext context, EditableTextState editableTextState) {
+          final List<ContextMenuButtonItem> buttonItems = editableTextState.contextMenuButtonItems;
 
           return AdaptiveTextSelectionToolbar.buttonItems(
             anchors: editableTextState.contextMenuAnchors,
