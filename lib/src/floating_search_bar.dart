@@ -926,6 +926,12 @@ class FloatingSearchBarController {
   /// Closes/Collapses the [FloatingSearchBar].
   void close() => _appBarState?.close();
 
+  /// Request focus on the search input field.
+  void focus() => _appBarState?.focus();
+
+  /// Drop focus from the search input field.
+  void unfocus() => _appBarState?.unfocus();
+
   /// Visually reveals the [FloatingSearchBar] when
   /// it was previously hidden via [hide].
   void show() => _searchBarState?.show();
