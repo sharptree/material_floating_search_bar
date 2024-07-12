@@ -304,11 +304,15 @@ class FloatingSearchAppBarState extends ImplicitlyAnimatedWidgetState<FloatingSe
 
   bool _isOpen = false;
   bool get isOpen => _isOpen;
-  set isOpen(bool value) {
+  set isOpen(bool value) => _setisOpen(value);
+
+  void _setisOpen(bool value, {bool autofocus = true}) {
     if (value) {
       () async {
         await controller.forward();
-        focus();
+        if (autofocus) {
+          focus();
+        }
       }();
     } else {
       unfocus();
@@ -369,7 +373,7 @@ class FloatingSearchAppBarState extends ImplicitlyAnimatedWidgetState<FloatingSe
     _assignController();
   }
 
-  void open() => isOpen = true;
+  void open({bool autofocus = true}) => _setisOpen(true, autofocus: autofocus);
   void close() => isOpen = false;
 
   void focus() {

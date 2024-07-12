@@ -921,7 +921,7 @@ class FloatingSearchBarController {
   FloatingSearchBarState? _searchBarState;
 
   /// Opens/Expands the [FloatingSearchBar].
-  void open() => _appBarState?.open();
+  void open({bool autofocus = true}) => _appBarState?.open(autofocus: autofocus);
 
   /// Closes/Collapses the [FloatingSearchBar].
   void close() => _appBarState?.close();
