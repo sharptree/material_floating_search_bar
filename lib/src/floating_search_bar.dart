@@ -627,7 +627,7 @@ class FloatingSearchBarState extends ImplicitlyAnimatedWidgetState<FloatingSearc
           ? _getSearchBarWidget()
           : PopScope(
               canPop: !isOpen,
-              onPopInvoked: (bool didPop) {
+              onPopInvokedWithResult: (didPop, result) {
                 if (!didPop && isOpen) {
                   close();
                 }

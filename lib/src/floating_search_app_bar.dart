@@ -514,7 +514,7 @@ class FloatingSearchAppBarState extends ImplicitlyAnimatedWidgetState<FloatingSe
         ? _getBarWidget(bar)
         : PopScope(
             canPop: !isOpen || widget.alwaysOpened,
-            onPopInvoked: (bool didPop) {
+            onPopInvokedWithResult: (didPop, result) {
               if (!didPop && isOpen && !widget.alwaysOpened) {
                 close();
               }
@@ -578,8 +578,8 @@ class FloatingSearchAppBarState extends ImplicitlyAnimatedWidgetState<FloatingSe
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: <Color>[
-                backgroundColor.withOpacity(0.0),
-                backgroundColor.withOpacity(1.0),
+                backgroundColor.withValues(alpha: 0.0),
+                backgroundColor.withValues(alpha: 1.0),
               ],
             ),
           ),
@@ -692,9 +692,9 @@ class FloatingSearchAppBarState extends ImplicitlyAnimatedWidgetState<FloatingSe
 
   @override
   FloatingSearchAppBarStyle get newValue {
-    final ThemeData theme = Theme.of(context);
-    final AppBarTheme appBar = theme.appBarTheme;
-    final TextDirection direction = Directionality.of(context);
+    final theme = Theme.of(context);
+    final appBar = theme.appBarTheme;
+    final direction = Directionality.of(context);
 
     return FloatingSearchAppBarStyle(
       height: widget.height ?? kToolbarHeight,
